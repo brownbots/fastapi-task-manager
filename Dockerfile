@@ -4,14 +4,14 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
-# Copy all files into the container
+# Copy everything to /app in the container
 COPY . .
 
-# Install Python dependencies
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port FastAPI runs on
+# Expose FastAPI's default port
 EXPOSE 8000
 
-# Run the app using the correct module path
+# Launch the app correctly using the subfolder path
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
