@@ -15,3 +15,4 @@ EXPOSE 8000
 
 # Launch the app correctly using the subfolder path
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
