@@ -1,18 +1,15 @@
-# Use official Python image
-FROM python:3.11-slim
+# Use official Python base image
+FROM python:3.11
 
-# Set working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy everything to /app in the container
-COPY . .
-
 # Install dependencies
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose FastAPI's default port
-EXPOSE 8000
+# Copy all source code
+COPY . .
 
-# Launch the app correctly using the subfolder path
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
-
+# TEMPORARY DEBUG: list files/folders to debug structure
+CMD ["ls", "-R", "."]
